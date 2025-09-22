@@ -65,7 +65,7 @@ Escribir una función que reciba una lista de números y devuelva solo aquellos 
 
 # Codigo:
 ``` Python
-def result(num):
+def result(num: int):
     if num < 2:
         return False
     for i in range(2, num):
