@@ -88,7 +88,7 @@ Se sabe que cualquier número menor de 2 no sera primo, entonces se trabaja en u
 # Agregado: 
 
 ``` Python
-entrada_usuario = input("Ingresa los números de la lista separados por comas (ej: 1,2,3,4): ")
+entrada_usuario = input("Ingresa los números de la lista separados por comas: ")
 lista_nums = [int(numero) for numero in entrada_usuario.split(',')]    
 ```
 Con estas 2 líneas de codigo, se puede reemplaza la linea ```lista = [1, 2, 3, 4, 5, 6, 7, 8, 9]```, para que el usuario pueda ingresar su propia lista a revisión, aunque el nombre de las variables es a gusto personal. 
@@ -99,20 +99,24 @@ Escribir una función que reciba una lista de números enteros y devolver la may
 
 # Codigo:
 ``` Python
-def mayor_suma(lista):
-    if len(lista) < 2:
+def mayor_suma(lista_nums):
+    if len(lista_nums) < 2:
         return None
-    mayor = lista[0] + lista[1]
-    for i in range(1, len(lista) - 1):
-        suma = lista[i] + lista[i + 1]
+    mayor = lista_nums[0] + lista_nums[1]
+    for i in range(1, len(lista_nums) - 1):
+        suma = lista_nums[i] + lista_nums[i + 1]
         if suma > mayor:
             mayor = suma
     return mayor
 
-lista = [1, 2, 3, 10, 8, 5, 11, 2]
-print("La mayor suma de dos números consecutivos es: ", mayor_suma(lista))
+entrada_usuario = input("Ingresa los números de la lista separados por comas: ")
+lista_nums = [int(numero) for numero in entrada_usuario.split(',')]   
+
+print("La mayor suma de dos números consecutivos es: ", mayor_suma(lista_nums))
 ```
 # Explicación:
+
+Se crea una función que recibe una lista de números, el primer ciclo ```if``` permite hacer un filtro en el que si una lista es menor a 2 entonces no se retornara nada. Para poder encontrar el número mayor de 2 números consecutivos se empieza a recorrer la lista desde el primer número (```lista_nums[0]```) y sumandole el siguiente (```lista_num[1]```), este resultado se almacena en la variable ```mayor```, despues de esto se termina de recorrer la lista elemento por elemento hasta llegar a la suma final, si alguna suma supera a la anterior entonces esta se almacena como la nueva suma ```mayor```, si ninguna otra suma pasa este valor, entonces se termina retornando este, puesto que es el resultado mayor.
 
 # Reto 1.5:
 Escribir una función que reciba una lista de cadenas y retorne únicamente aquellos elementos que tengan los mismos caracteres. por ejemplo entrada: ```["amor", "roma", "perro"]```, salida```["amor", "roma"].```
@@ -130,7 +134,15 @@ def same_letters(lista):
                     result.append(lista[j])
     return result
 
-entrance = ["roma", "amor", "perro"]
-print(same_letters(entrance))
+entrance = input("Ingresa las palabras separadas por comas: ")
+lista_words = [palabra.strip() for palabra in entrance.split(',')]
+
+print(f"Palabras con los mismos caracteres: {same_letters(lista_words)}")
 ```
 # Explicación: 
+
+La variable ```result```, se encarga de almacenar las palabras que tengan los mismos caracteres en la función, luego simplemente se recorren los caracteres de la función en un ciclo ```for``` y se ordenan con ```sorted()```, por lo que si la palabra lista ```i``` es igual a la palabra en la lista ```j```, entonces se agregan a la variable ```result```, si no son iguales no se agregaran, lo mismo si ya hacen parte de la lista, evitando asi duplicados, dando como resultado que la función retorna solo aquellos elementos que son "anagramas".
+
+# Conclusión:
+
+Cada uno de los retos puestos en clase, permito recordar cosas claves, como el manejo de strings y funciones de estas importantes como ```sorted()``` o ```.lower()```, asi mismo como el desarrollo de la logica de programación en listas y aritmetica, desde lo mas sencillo como una pequeña calculadora de 2 números con operadores basicos, hasta algo mucho mas complejo como la comparación de caracteres de cada string de una lista para encontrar cuales son anagramas.
