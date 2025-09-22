@@ -9,5 +9,7 @@ def same_letters(lista):
                     result.append(lista[j])
     return result
 
-entrance = ["roma", "amor", "perro"]
-print(same_letters(entrance))
+entrance = input("Ingresa las palabras separadas por comas: ")
+lista_words = [palabra.strip() for palabra in entrance.split(',')]
+
+print(f"Palabras con los mismos caracteres: {same_letters(lista_words)}")
