@@ -1,4 +1,4 @@
-def result(num):
+def result(num: int):
     if num < 2:
         return False
     for i in range(2, num):
@@ -11,5 +11,6 @@ primos = []
 for numero in lista:
     if result(numero):
         primos.append(numero)
+
 
 print(f"Estos son los numeros primos en la lista: {primos}")
